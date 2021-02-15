@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PomoTimer</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>PomoTimer</h1>
+        <hr/>
+    </header>
+    <main class="main">
+        <section class='container'>
+            <nav class="menu">
+                <ul>
+                    <li id="o1" class="active" onclick="selecionar()">Pomodoro</li>
+                    <li id="o2" onclick="selecionar()">Intervalo Curto</li>
+                    <li id="o3" onclick="selecionar()">Intervalo Longo</li>
+                </ul>
+            </nav>
+            <div id="timer" class="timer">
+                <span id="min">25</span>:<span id="sec">00</span>
+            </div>
+            <button onclick="playOrPause()">Começar</button>
+            <div class='resetar'><a onclick="resetar()">resetar</a></div>
+        </section>
+    </main>
+    <footer>
+        <p>Feito com ♥ by <a href="https://github.com/ErnaneJ" target="_blank">Ernane Ferreira</a></p>
+    </footer>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
