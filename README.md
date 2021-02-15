@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="PomoTimer" title="PomoTimer" src=".github/name.png" width="220px" />
+  <strong>PomoTimer</strong>
 </h1>
 
 <p align="center">
@@ -24,6 +24,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projeto
 
 O PomoTimer é um temporizador pomodoro que funciona no navegador desktop e mobile. O objetivo deste aplicativo é ajudar o indivíduo a se concentrar em qualquer tarefa que esteja desenvolvendo. Este aplicativo é inspirado na <a href="https://www.napratica.org.br/pomodoro/">Técnica Pomodoro</a>, que é um método de gerenciamento de tempo desenvolvido por Francesco Cirillo. ⏰
+
+Clique <a href="https://ernanej.github.io/PomoTimer/index.html" target="_blank">aqui</a> para acessá-lo.
 
 
 
