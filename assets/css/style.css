@@ -100,6 +100,12 @@ button {
     font-weight: bold;
     text-transform: uppercase;
     outline: 0;
+    cursor: pointer;
+    opacity: .85;
+}
+
+button:hover {
+    opacity: 1;
 }
 
 .resetar {

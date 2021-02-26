@@ -14,6 +14,63 @@ function reset() {
     m = parseInt(document.querySelector('#min').innerHTML) - 1;
 }
 
+const Notifications = {
+    requestPermission() {
+        if (window.Notification && Notification.permission != 'denied') {
+            Notification.requestPermission()
+        }
+    },
+    missing5() {
+        if (window.Notification && Notification.permission != 'denied') {
+            Notification.requestPermission(status => {
+                let notificationA = new Notification('PomoTimer - Tempo restante', {
+                    body: "Em 5 minutos se encerra este intervalo Pomodoro.",
+                    icon: ''
+                });
+                notificationA.onclick = function() {
+                    window.focus()
+                }
+            });
+        }
+    },
+    timeOut() {
+        if (window.Notification && Notification.permission != 'denied') {
+            Notification.requestPermission(status => {
+                let notificationB = new Notification('PomoTimer - Concluído', {
+                    body: "Intervalo de 25min concluído com sucesso! Descanse um pouco.",
+                    icon: ''
+                });
+                notificationA.onclick = function() {
+                    window.focus()
+                }
+            });
+
+        }
+    },
+    breakIsOver() {
+        if (window.Notification && Notification.permission != 'denied') {
+            Notification.requestPermission(status => {
+                let notificationC = new Notification('PomoTimer - Intervalo finalizado', {
+                    body: "Intervalo finalizado com sucesso. Que tal mais um ciclo?",
+                    icon: ''
+                });
+                notificationA.onclick = function() {
+                    window.focus()
+                }
+            });
+        }
+    },
+    choose() {
+        if (pomodoro && (m == 4) && (s == 58)) {
+            Notifications.missing5();
+        } else if (pomodoro && (m == 0) && (s == 2)) {
+            Notifications.timeOut();
+        } else if ((longo || curto) && (m == 0) && (s == 2)) {
+            Notifications.breakIsOver();
+        }
+    }
+}
+
 function selecionar() {
     e = event.toElement.id;
     for (var i = 1; i < 4; i++) {
@@ -73,6 +130,7 @@ function playOrPause() {
         document.querySelector('button').classList.add('parar');
         control = 0;
         tempo();
+        Notifications.requestPermission();
         document.querySelector('.resetar a').style.display = 'block';
     }
 
@@ -80,6 +138,7 @@ function playOrPause() {
 
 function tempo() {
     intervalo = setInterval(function() {
+        Notifications.choose();
         if (s == 0 && m > 0) {
             m--;
             s = 59;
