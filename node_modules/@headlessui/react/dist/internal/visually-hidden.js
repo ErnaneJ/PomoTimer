@@ -1,0 +1,1 @@
+import{forwardRefWithAs as t,render as o}from"../utils/render.js";let i="div",h=t(function(e,r){return o({ourProps:{ref:r,style:{position:"absolute",width:1,height:1,padding:0,margin:-1,overflow:"hidden",clip:"rect(0, 0, 0, 0)",whiteSpace:"nowrap",borderWidth:"0",display:"none"}},theirProps:e,slot:{},defaultTag:i,name:"VisuallyHidden"})});export{h as VisuallyHidden};

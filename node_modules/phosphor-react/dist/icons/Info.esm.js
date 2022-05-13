@@ -1,0 +1,147 @@
+import React, { forwardRef } from 'react';
+import { renderPathForWeight } from '../lib/index.esm.js';
+import IconBase from '../lib/IconBase.esm.js';
+
+/* GENERATED FILE */
+var pathsByWeight = /*#__PURE__*/new Map();
+pathsByWeight.set("bold", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "128",
+    cy: "128",
+    r: "96",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("polyline", {
+    points: "120 124 128 124 128 176 136 176",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("circle", {
+    cx: "126",
+    cy: "84",
+    r: "16"
+  }));
+});
+pathsByWeight.set("duotone", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "128",
+    cy: "128",
+    r: "96",
+    opacity: "0.2"
+  }), React.createElement("circle", {
+    cx: "128",
+    cy: "128",
+    r: "96",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("polyline", {
+    points: "120 120 128 120 128 176 136 176",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "126",
+    cy: "84",
+    r: "12"
+  }));
+});
+pathsByWeight.set("fill", function () {
+  return React.createElement(React.Fragment, null, React.createElement("path", {
+    d: "M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm-2,48a12,12,0,1,1-12,12A12,12,0,0,1,126,72Zm10,112h-8a8,8,0,0,1-8-8V128a8,8,0,0,1,0-16h8a8,8,0,0,1,8,8v48a8,8,0,0,1,0,16Z"
+  }));
+});
+pathsByWeight.set("light", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "128",
+    cy: "128",
+    r: "96",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("polyline", {
+    points: "120 120 128 120 128 176 136 176",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("circle", {
+    cx: "126",
+    cy: "84",
+    r: "10"
+  }));
+});
+pathsByWeight.set("thin", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "128",
+    cy: "128",
+    r: "96",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("polyline", {
+    points: "120 120 128 120 128 176 136 176",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("circle", {
+    cx: "126",
+    cy: "84",
+    r: "8"
+  }));
+});
+pathsByWeight.set("regular", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "128",
+    cy: "128",
+    r: "96",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("polyline", {
+    points: "120 120 128 120 128 176 136 176",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "126",
+    cy: "84",
+    r: "12"
+  }));
+});
+
+var renderPath = function renderPath(weight, color) {
+  return renderPathForWeight(weight, color, pathsByWeight);
+};
+
+var Info = /*#__PURE__*/forwardRef(function (props, ref) {
+  return React.createElement(IconBase, Object.assign({
+    ref: ref
+  }, props, {
+    renderPath: renderPath
+  }));
+});
+Info.displayName = "Info";
+
+export default Info;
+//# sourceMappingURL=Info.esm.js.map

@@ -1,0 +1,442 @@
+import React, { forwardRef } from 'react';
+import { renderPathForWeight } from '../lib/index.esm.js';
+import IconBase from '../lib/IconBase.esm.js';
+
+/* GENERATED FILE */
+var pathsByWeight = /*#__PURE__*/new Map();
+pathsByWeight.set("bold", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "120",
+    cy: "48",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("circle", {
+    cx: "40",
+    cy: "120",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("circle", {
+    cx: "160",
+    cy: "208",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("circle", {
+    cx: "208",
+    cy: "72",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("line", {
+    x1: "184.8",
+    y1: "65.7",
+    x2: "143.2",
+    y2: "54.3",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("line", {
+    x1: "102.2",
+    y1: "64.1",
+    x2: "57.8",
+    y2: "103.9",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("line", {
+    x1: "59.4",
+    y1: "134.2",
+    x2: "140.6",
+    y2: "193.8",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }), React.createElement("line", {
+    x1: "168",
+    y1: "185.4",
+    x2: "200",
+    y2: "94.6",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "24"
+  }));
+});
+pathsByWeight.set("duotone", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "120",
+    cy: "48",
+    r: "24",
+    opacity: "0.2"
+  }), React.createElement("circle", {
+    cx: "40",
+    cy: "120",
+    r: "24",
+    opacity: "0.2"
+  }), React.createElement("circle", {
+    cx: "160",
+    cy: "208",
+    r: "24",
+    opacity: "0.2"
+  }), React.createElement("circle", {
+    cx: "208",
+    cy: "72",
+    r: "24",
+    opacity: "0.2"
+  }), React.createElement("circle", {
+    cx: "120",
+    cy: "48",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "40",
+    cy: "120",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "160",
+    cy: "208",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "208",
+    cy: "72",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "184.8",
+    y1: "65.7",
+    x2: "143.2",
+    y2: "54.3",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "102.2",
+    y1: "64.1",
+    x2: "57.8",
+    y2: "103.9",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "59.4",
+    y1: "134.2",
+    x2: "140.6",
+    y2: "193.8",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "168",
+    y1: "185.4",
+    x2: "200",
+    y2: "94.6",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }));
+});
+pathsByWeight.set("fill", function () {
+  return React.createElement(React.Fragment, null, React.createElement("path", {
+    d: "M230.6,49.4a31.9,31.9,0,0,0-45.2,0h0a30.2,30.2,0,0,0-5.2,6.7L152,48.4a32,32,0,0,0-54.6-23h0a32,32,0,0,0-5.8,37.4L57.7,93.3a32,32,0,0,0-40.3,4.1h0a31.9,31.9,0,0,0,0,45.2A31.6,31.6,0,0,0,40,152a32.1,32.1,0,0,0,20.3-7.2l70,51.3a32,32,0,0,0,7.1,34.5,31.9,31.9,0,0,0,45.2,0,31.9,31.9,0,0,0,0-45.2,43.3,43.3,0,0,0-4.7-4l27.3-77.5H208a31.6,31.6,0,0,0,22.6-9.4A31.9,31.9,0,0,0,230.6,49.4ZM162.8,176.1a32.4,32.4,0,0,0-23.1,7.1l-70-51.3a32.4,32.4,0,0,0-1.3-26.7l33.9-30.5A32.4,32.4,0,0,0,120,80a31.6,31.6,0,0,0,22.6-9.4,30.2,30.2,0,0,0,5.2-6.7L176,71.6a31.6,31.6,0,0,0,9.4,23,43.3,43.3,0,0,0,4.7,4Z"
+  }));
+});
+pathsByWeight.set("light", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "120",
+    cy: "48",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("circle", {
+    cx: "40",
+    cy: "120",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("circle", {
+    cx: "160",
+    cy: "208",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("circle", {
+    cx: "208",
+    cy: "72",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("line", {
+    x1: "184.8",
+    y1: "65.7",
+    x2: "143.2",
+    y2: "54.3",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("line", {
+    x1: "102.2",
+    y1: "64.1",
+    x2: "57.8",
+    y2: "103.9",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("line", {
+    x1: "59.4",
+    y1: "134.2",
+    x2: "140.6",
+    y2: "193.8",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }), React.createElement("line", {
+    x1: "168",
+    y1: "185.4",
+    x2: "200",
+    y2: "94.6",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "12"
+  }));
+});
+pathsByWeight.set("thin", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "120",
+    cy: "48",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("circle", {
+    cx: "40",
+    cy: "120",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("circle", {
+    cx: "160",
+    cy: "208",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("circle", {
+    cx: "208",
+    cy: "72",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("line", {
+    x1: "184.8",
+    y1: "65.7",
+    x2: "143.2",
+    y2: "54.3",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("line", {
+    x1: "102.2",
+    y1: "64.1",
+    x2: "57.8",
+    y2: "103.9",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("line", {
+    x1: "59.4",
+    y1: "134.2",
+    x2: "140.6",
+    y2: "193.8",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }), React.createElement("line", {
+    x1: "168",
+    y1: "185.4",
+    x2: "200",
+    y2: "94.6",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "8"
+  }));
+});
+pathsByWeight.set("regular", function (color) {
+  return React.createElement(React.Fragment, null, React.createElement("circle", {
+    cx: "120",
+    cy: "48",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "40",
+    cy: "120",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "160",
+    cy: "208",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("circle", {
+    cx: "208",
+    cy: "72",
+    r: "24",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "184.8",
+    y1: "65.7",
+    x2: "143.2",
+    y2: "54.3",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "102.2",
+    y1: "64.1",
+    x2: "57.8",
+    y2: "103.9",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "59.4",
+    y1: "134.2",
+    x2: "140.6",
+    y2: "193.8",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }), React.createElement("line", {
+    x1: "168",
+    y1: "185.4",
+    x2: "200",
+    y2: "94.6",
+    fill: "none",
+    stroke: color,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: "16"
+  }));
+});
+
+var renderPath = function renderPath(weight, color) {
+  return renderPathForWeight(weight, color, pathsByWeight);
+};
+
+var Polygon = /*#__PURE__*/forwardRef(function (props, ref) {
+  return React.createElement(IconBase, Object.assign({
+    ref: ref
+  }, props, {
+    renderPath: renderPath
+  }));
+});
+Polygon.displayName = "Polygon";
+
+export default Polygon;
+//# sourceMappingURL=Polygon.esm.js.map
