@@ -14,6 +14,7 @@ interface ActionsProps{
 
 export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: ActionsProps ){
   const [statusChangedTime, setStatusChangedTime] = useState(false);
+  const [popupStatus, setPopupStatus] = useState<boolean>(false);
   const handleCounting = () => {
     setDataTimer({...dataTimer, counting: !dataTimer.counting});
   }
@@ -32,12 +33,16 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
   }, [dataTimer]);
 
   return (
-    <Popover className="flex flex-col items-center justify-center">
-      <Popover.Panel>
-        <Popup callback={handleReset} message="Opss..! Ao fazer isso, você irá reiniciar o contador atual. Tem certeza?"/>
-      </Popover.Panel>
-    
-      <button
+    <>
+      <Popup 
+        title="⚠️ Oopss..!" 
+        status={popupStatus} 
+        setStatus={setPopupStatus} 
+        currentTab={currentTab} 
+        message="Você tem certeza de que deseja reiniciar manualmente o timer atual? 🤔" 
+        callback={handleReset}/>
+
+      <button type="button"
         onClick={handleCounting}
         className={`button-color-tab${currentTab == 0 ? "Main" : (currentTab == 1 ? "ShortTime" : "LongTime")}
           w-[200px] h-[55px] bg-white text-3xl uppercase font-bold mt-4 mb-3 transition-color duration-500 rounded-lg opacity-80 hover:opacity-100 box-shadow-button${dataTimer.counting ? "--active" : ""}
@@ -46,11 +51,12 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
           {!dataTimer.counting ? "Start" : "Stop"}
       </button>
 
-      <Popover.Button 
-        className={`text-white text-xl transition-all duration-500 ${statusChangedTime ? "" : "hide-Popover.Button"}`}
+      <button type="button"
+        onClick={() => setPopupStatus(true)}
+        className={`text-white text-xl transition-all duration-500 ${statusChangedTime ? "" : "hide-button"}`}
       >
           reset
-      </Popover.Button>
-    </Popover>
+      </button>
+    </>
   );
 }

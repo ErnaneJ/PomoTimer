@@ -24,7 +24,7 @@ export function Tabs({ currentTab, setCurrentTab }: TabsProps){
 
   return (
     <section className='max-w-5xl w-[600px] backdrop-blur-sm bg-white/20 rounded-xl drop-shadow-2xl px-4 py-2 flex flex-col items-center justify-center'>
-      <Menu setCurrentTab={setCurrentTab} currentTab={currentTab} />
+      <Menu setCurrentTab={setCurrentTab} dataTimer={dataTimer} currentTab={currentTab} />
       <Timer dataTimer={dataTimer} />
       <Actions currentTab={currentTab} setCurrentTab={setCurrentTab} dataTimer={dataTimer} setDataTimer={setDataTimer}/>
     </section>

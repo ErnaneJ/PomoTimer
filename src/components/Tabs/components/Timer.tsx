@@ -7,7 +7,7 @@ interface TimerProps{
 
 export function Timer({ dataTimer }:TimerProps){
   return (
-    <div className="text-9xl text-white font-bold text-shadow-timer my-6">
+    <div className="text-9xl text-white font-bold text-custom-shadow my-6">
       {complementWithZeros(dataTimer.min)}
       :
       {complementWithZeros(dataTimer.sec)}
