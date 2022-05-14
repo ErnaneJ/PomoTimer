@@ -38,7 +38,7 @@ export function Popup({ status, setStatus, message, title, currentTab, callback 
                 bg-white text-md px-3 py-1 font-bold transition-color duration-500 rounded-lg 
               `}
             >
-              Confirm
+              Confirmar
             </button>
             <button 
               type="button" 
@@ -46,7 +46,7 @@ export function Popup({ status, setStatus, message, title, currentTab, callback 
               className={`bg-tab${currentTab == 0 ? "Main" : (currentTab == 1 ? "ShortTime" : "LongTime")}
               text-white text-md px-3 py-1 font-bold transition-color duration-500 rounded-lg opacity-100 hover:opacity-80 `}
             >
-              Cancel
+              Cancelar
             </button>
           </div>
         </Dialog.Panel>
