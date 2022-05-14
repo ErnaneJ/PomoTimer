@@ -2,12 +2,15 @@ import { useEffect, useState } from "react"
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Tabs } from "./Tabs";
+import { notifications } from "../lib/helper";
 
-import clock from '../assets/images/clock.svg'
+import clock from '../assets/images/clock.svg';
 
 export function PomoTimer() {
   const [ currentTab, setCurrentTab ] = useState<number>(0);
   
+  useEffect(() => notifications.requestPermission(), []);
+
   return (
     <section className={`bg-tab${currentTab == 0 ? "Main" : (currentTab == 1 ? "ShortTime" : "LongTime")} relative overflow-hidden w-screen h-screen flex align-center flex-col justify-between font-mPlus font-w text-md transition-colors duration-1000 select-none`}>
       <Header title="PomoTimer"/>

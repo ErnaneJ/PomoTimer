@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Time } from "../../../lib/types"
-import { getInitialTimerByTagType, updateTimer, timerIsChanged } from "../../../lib/helper"
-import { Popover } from '@headlessui/react';
+import { getInitialTimerByTagType, updateTimer, timerIsChanged, sounds } from "../../../lib/helper"
 import { Popup } from "./Popup";
 
 
@@ -15,11 +14,14 @@ interface ActionsProps{
 export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: ActionsProps ){
   const [statusChangedTime, setStatusChangedTime] = useState(false);
   const [popupStatus, setPopupStatus] = useState<boolean>(false);
+
   const handleCounting = () => {
+    sounds.switch();
     setDataTimer({...dataTimer, counting: !dataTimer.counting});
   }
 
   const handleReset = () => {
+    if(dataTimer.counting) sounds.switch();
     setDataTimer(getInitialTimerByTagType(currentTab));
   }
 
@@ -39,7 +41,7 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
         status={popupStatus} 
         setStatus={setPopupStatus} 
         currentTab={currentTab} 
-        message="Você tem certeza de que deseja reiniciar manualmente o timer atual? 🤔" 
+        message="Você tem certeza de que deseja reiniciar manualmente o temporizador atual? 🤔" 
         callback={handleReset}/>
 
       <button type="button"
@@ -48,14 +50,14 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
           w-[200px] h-[55px] bg-white text-3xl uppercase font-bold mt-4 mb-3 transition-color duration-500 rounded-lg opacity-80 hover:opacity-100 box-shadow-button${dataTimer.counting ? "--active" : ""}
         `}
         >
-          {!dataTimer.counting ? "Start" : "Stop"}
+          {!dataTimer.counting ? "Iniciar" : "Parar"}
       </button>
 
       <button type="button"
         onClick={() => setPopupStatus(true)}
         className={`text-white text-xl transition-all duration-500 ${statusChangedTime ? "" : "hide-button"}`}
       >
-          reset
+          reiniciar
       </button>
     </>
   );

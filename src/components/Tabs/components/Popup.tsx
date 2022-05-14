@@ -18,7 +18,7 @@ export function Popup({ status, setStatus, message, title, currentTab, callback 
   return (
     <>
       <Dialog className="absolute top-6 h-full w-full flex items-start justify-center z-20" open={status} onClose={() => setStatus(false)}>
-        <Dialog.Panel className="w-1/2 backdrop-blur-sm bg-white/80 rounded-xl drop-shadow-2xl px-4 py-6 flex flex-col items-center box-custom-shadow">
+        <Dialog.Panel className="w-full mx-2 sm:my-0 sm:w-1/2 backdrop-blur-sm bg-white/80 rounded-xl drop-shadow-2xl px-4 py-6 flex flex-col items-center box-custom-shadow">
           <Dialog.Title className="w-full text-xl text-zinc-700 font-bold my-2 flex flex-row items-center justify-between">
             {title}
             <button type="button" onClick={() => setStatus(false)}>
