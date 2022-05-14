@@ -29,8 +29,8 @@ export function updateTimer(
     
   if (dataTimer.sec <= 0 && dataTimer.min > 0) setDataTimer({
     ...dataTimer,
-    min: 0,// dataTimer.min - 1,
-    sec: 5
+    min: dataTimer.min - 1,
+    sec: 59
   });
   
   if (dataTimer.sec > 0) setDataTimer({
