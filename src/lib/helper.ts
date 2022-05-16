@@ -29,8 +29,8 @@ export function updateTimer(
     
   if (dataTimer.sec <= 0 && dataTimer.min > 0) setDataTimer({
     ...dataTimer,
-    min: dataTimer.min - 1,
-    sec: 59
+    min: 1 - 1,
+    sec: 5
   });
   
   if (dataTimer.sec > 0) setDataTimer({
@@ -86,14 +86,16 @@ export const notifications = {
     }
   },
   sendNotification(title: string, message: string, currentTab: number):void {
-    if (window.Notification && Notification.permission != 'denied') {
-      Notification.requestPermission(status => {
-        const notification = new Notification(title, {
-          body: message,
-          icon: [clock0, clock1, clock2][currentTab]
+    navigator.serviceWorker.register('sw.js');
+    Notification.requestPermission((result):void => {
+      if (result === 'granted') {
+        navigator.serviceWorker.ready.then((registration):void => {
+          registration.showNotification(title, {
+            body: message,
+            icon: [clock0, clock1, clock2][currentTab]
+          });
         });
-        notification.onclick = ():void => {window.focus(); sounds.tab();};
-      });
-    }
+      }
+    });
   }
 }
