@@ -33,10 +33,12 @@ export function updateTimer(
     sec: 59
   });
   
-  if (dataTimer.sec > 0) setDataTimer({
+  if (dataTimer.sec > 0){ 
+    setDataTimer({
     ...dataTimer,
-    sec: dataTimer.sec - 1
-  });
+      sec: dataTimer.sec - 1
+    });
+  }
   
   if (dataTimer.min == 0 && dataTimer.sec == 0 && currentTab == 0) {
     setCurrentTab(1); // short break
@@ -81,7 +83,7 @@ export const sounds = {
 
 export const notifications = {
   requestPermission():void {
-    if (window.Notification && Notification.permission != 'denied') {
+    if (window.Notification || Notification) {
       Notification.requestPermission();
     }
   },
