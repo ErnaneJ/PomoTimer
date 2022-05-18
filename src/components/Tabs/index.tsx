@@ -29,7 +29,6 @@ export function Tabs({ currentTab, setCurrentTab }: TabsProps){
 
   useEffect(() => {
     const favicon = getFaviconEl();
-    console.log([clock0, clock1, clock2][currentTab])
     if(favicon != null) favicon.href = [clock0, clock1, clock2][currentTab];
     setDataTimer(getInitialTimerByTagType(currentTab));
   }, [currentTab])
