@@ -29,9 +29,3 @@ jobs:
       - run: npm ci
       - run: npm test
 
-      - uses: mattallty/jest-github-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          test-command: "npm run coverage"
-
