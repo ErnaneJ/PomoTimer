@@ -27,17 +27,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run coverage
-
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
-      with:
-        name: coverage
-        path: ./coverage
-        retention-days: 5
-
+    - run: npm test
+    
     - name: Code Coverage Report
-      uses: romeovs/lcov-reporter-action@v0.2.16
+      uses: ziishaned/jest-reporter-action@v0.0.1
       with:
-        lcov-file: ./coverage/lcov.info
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        test-command: "npm jest --coverage"
 
