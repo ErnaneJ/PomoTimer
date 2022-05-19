@@ -27,5 +27,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm test
+    - run: npm run coverage
+
+  - name: Code Coverage Report
+    uses: romeovs/lcov-reporter-action@v0.2.16
+    with:
+      title: ✅ Code Coverage Report
+      lcov-file: ./coverage/lcov.info
+      lcov-base: ./coverage/lcov.info
 
