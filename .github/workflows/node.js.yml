@@ -20,19 +20,19 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run coverage
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run coverage
 
-  - name: Code Coverage Report
-    uses: romeovs/lcov-reporter-action@v0.2.16
-    with:
-      title: ✅ Code Coverage Report
-      lcov-file: ./coverage/lcov.info
-      lcov-base: ./coverage/lcov.info
+      - name: Code Coverage Report
+        uses: romeovs/lcov-reporter-action@v0.2.16
+        with:
+          title: ✅ Code Coverage Report
+          lcov-file: ./coverage/lcov.info
+          lcov-base: ./coverage/lcov.info
 
