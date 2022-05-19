@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm test
+    - run: npm coverage
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
