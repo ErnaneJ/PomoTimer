@@ -29,9 +29,3 @@ jobs:
     - run: npm ci
     - run: npm test
 
-    - name: Code Coverage Report
-      uses: ziishaned/jest-reporter-action@v0.0.1
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        test-command: "npm run coverage"
-
