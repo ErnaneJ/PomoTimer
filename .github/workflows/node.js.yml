@@ -27,12 +27,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm run coverage
+      - run: npm test
 
-      - name: Code Coverage Report
-        uses: romeovs/lcov-reporter-action@v0.2.16
+      - uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: ✅ Code Coverage Report
-          lcov-file: ./coverage/lcov.info
-          lcov-base: ./coverage/lcov.info
+          test-command: "npm run coverage"
 
