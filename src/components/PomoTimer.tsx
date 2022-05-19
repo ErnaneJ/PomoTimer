@@ -5,12 +5,17 @@ import { Tabs } from "./Tabs";
 import { notifications } from "../lib/helper";
 
 import clock from '../assets/images/clock.svg';
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 export function PomoTimer() {
   const [ currentTab, setCurrentTab ] = useState<number>(0);
   
-  useEffect(() => notifications.requestPermission(), []);
+  useEffect(() => {
+    toast('Olá, Bem-vindo(a)!', {
+      icon: '👏'
+    });
+    setTimeout(() => notifications.requestPermission(), 2000);
+  }, []);
 
   return (
     <>

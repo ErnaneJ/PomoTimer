@@ -1,5 +1,5 @@
-import React from "react";
 import { Time } from "./types";
+import toast from "react-hot-toast";
 
 import Switch from "../assets/sounds/switch.mp3";
 import Alarm from "../assets/sounds/alarm.mp3";
@@ -43,6 +43,12 @@ export function updateTimer(
   if (dataTimer.min == 0 && dataTimer.sec == 0 && currentTab == 0) {
     setCurrentTab(1); // short break
     setDataTimer(getInitialTimerByTagType(1));
+    toast.success('Jornada de 25min concluída com sucesso!', {
+      iconTheme: {
+        primary: ["rgb(219,82,77)", "rgb(70,142,145)", "rgb(67,126,168)"][currentTab],
+        secondary: "white"
+      },
+    });
     notifications.sendNotification(
       "🕑 PomoTimer - Jornada finalizada",
       "Jornada de 25min concluída com sucesso! Uffa.. 😅 Descanse um pouco.",
@@ -52,6 +58,12 @@ export function updateTimer(
   } else if ((currentTab != 0) && dataTimer.min == 0 && dataTimer.sec == 0) {
     setCurrentTab(0); // to restart the cycle
     setDataTimer(getInitialTimerByTagType(0));
+    toast.success('Opaaa.. 😎 Intervalo finalizado!', {
+      iconTheme: {
+        primary: ["rgb(219,82,77)", "rgb(70,142,145)", "rgb(67,126,168)"][currentTab],
+        secondary: "white"
+      },
+    });
     notifications.sendNotification(
       "🕑 PomoTimer - Intervalo encerrado",
       `Opaaa.. 😎 Intervalo finalizado! Que tal mais um ciclo?? 💪`,
