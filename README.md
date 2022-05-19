@@ -10,7 +10,7 @@
 <br>
 
 <p align="center">
-  <img alt="PomoTimer" src=".github/pomotimer.png" width="100%">
+  <img alt="PomoTimer" src="./assets/pomotimer.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
