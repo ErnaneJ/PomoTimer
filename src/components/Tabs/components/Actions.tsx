@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Time } from "../../../lib/types"
 import { getInitialTimerByTagType, updateTimer, timerIsChanged, sounds } from "../../../lib/helper"
-import { Popup } from "./Popup";
-
+import toast from "react-hot-toast";
 
 interface ActionsProps{
   currentTab: number;
@@ -13,7 +12,6 @@ interface ActionsProps{
 
 export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: ActionsProps ){
   const [statusChangedTime, setStatusChangedTime] = useState(false);
-  const [popupStatus, setPopupStatus] = useState<boolean>(false);
 
   const handleCounting = () => {
     sounds.switch();
@@ -22,6 +20,7 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
 
   const handleReset = () => {
     if(dataTimer.counting) sounds.switch();
+    toast.success("Temporizador reiniciado");
     setDataTimer(getInitialTimerByTagType(currentTab));
   }
 
@@ -36,14 +35,6 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
 
   return (
     <>
-      <Popup 
-        title="⚠️ Oopss..!" 
-        status={popupStatus} 
-        setStatus={setPopupStatus} 
-        currentTab={currentTab} 
-        message="Você tem certeza de que deseja reiniciar manualmente o temporizador atual? 🤔" 
-        callback={handleReset}/>
-
       <button type="button"
         onClick={handleCounting}
         className={`button-color-tab${currentTab == 0 ? "Main" : (currentTab == 1 ? "ShortTime" : "LongTime")}
@@ -54,8 +45,8 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
       </button>
 
       <button type="button"
-        onClick={() => setPopupStatus(true)}
-        className={`text-white text-xl transition-all duration-500 ${statusChangedTime ? "" : "hide-button"}`}
+        onClick={handleReset}
+        className={`text-white text-xl font-bold transition-all duration-500 ${statusChangedTime ? "" : "hide-button"}`}
       >
           reiniciar
       </button>
