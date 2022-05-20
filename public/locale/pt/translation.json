@@ -1,0 +1,21 @@
+{
+  "language": "Português",
+  "hello": "Olá!",
+  "pomodoro": "Pomodoro",
+  "short-break": "Intervalo curto",
+  "long-break": "Intervalo longo",
+  "update-language": "Linguagem atualizada com sucesso!",
+  "start": "Iniciar",
+  "stop": "Parar",
+  "reset": "reiniciar",
+  "msg-reset-timer": "Temporizador reiniciado",
+  "developed-by": "Desenvolvido com ♥ por ",
+  "timer-in-progress": "Temporizador em andamento",
+  "msg-time-in-progress": "📌 Para alterar o tipo de temporizador, pare o que já está em execução e tente novamente.",
+  "end-25-minute-journey": "Jornada de 25min concluída com sucesso!",
+  "notifies-end-journey": "🕑 PomoTimer - Jornada finalizada",
+  "notifies-end-25-minute-journey": "Jornada de 25min concluída com sucesso! Uffa.. 😅 Descanse um pouco.",
+  "end-interval": "Opaaa.. 😎 Intervalo finalizado!",
+  "notifies-end-interval": "🕑 PomoTimer - Intervalo encerrado",
+  "msg-notifies-end-interval": "Opaaa.. 😎 Intervalo finalizado! Que tal mais um ciclo?? 💪"
+}

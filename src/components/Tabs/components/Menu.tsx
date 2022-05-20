@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 import { timerIsChanged, sounds } from "../../../lib/helper";
 import { Time } from "../../../lib/types";
 
@@ -8,20 +9,22 @@ interface MenuProps{
   currentTab: number;
   setCurrentTab: (Tab: number) => void;
 }
-const tabs = [
-  {name: "Pomodoro", idx: 0},
-  {name: "Intervalo Curto", idx: 1},
-  {name: "Intervalo Longo", idx: 2}
-]
 
 export function Menu({ currentTab, dataTimer, setCurrentTab }: MenuProps){
+  const { t } = useTranslation();
+  const [tabs, _] = useState([
+    {name: t("pomodoro"), idx: 0},
+    {name: t("short-break"), idx: 1},
+    {name: t("long-break"), idx: 2}
+  ]);
+  
   const handleChangeTab = (tab: number) => {
     if(timerIsChanged(dataTimer, currentTab)){
       if(dataTimer.counting){
         toast.dismiss();
-        toast.error("Temporizador em andamento");
+        toast.error(t('timer-in-progress'));
         setTimeout( () => toast(
-          "📌 Para alterar o tipo de temporizador, pare o que já estiver em execução e tente novamente.",
+          t('msg-time-in-progress'),
           {
             duration: 3000,
             position: "bottom-left",
@@ -31,7 +34,7 @@ export function Menu({ currentTab, dataTimer, setCurrentTab }: MenuProps){
       }else{
         toast.dismiss();
         setCurrentTab(tab);
-        toast.success("Temporizador reiniciado");
+        toast.success(t("msg-reset-timer"));
       }
     }else if(tab !== currentTab){
       setCurrentTab(tab);
@@ -40,6 +43,7 @@ export function Menu({ currentTab, dataTimer, setCurrentTab }: MenuProps){
   useEffect(() => {
     sounds.tab();
   }, [currentTab]);
+
   return (
     <>
     <nav className="w-full flex items-center justify-between py-2 sm:w-3/4">

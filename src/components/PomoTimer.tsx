@@ -5,15 +5,12 @@ import { Tabs } from "./Tabs";
 import { notifications } from "../lib/helper";
 
 import clock from '../assets/images/clock.svg';
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 export function PomoTimer() {
   const [ currentTab, setCurrentTab ] = useState<number>(0);
   
   useEffect(() => {
-    toast('Olá, Bem-vindo(a)!', {
-      icon: '👏'
-    });
     setTimeout(() => notifications.requestPermission(), 2000);
   }, []);
 
@@ -26,8 +23,8 @@ export function PomoTimer() {
           <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab}/>
         </main>
         <Footer/>
-        <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] bottom-[-45vh] left-[-40vw] opacity-30 -z-9" />
-        <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] top-[-45vh] right-[-40vw] opacity-30 -z-9" />
+        <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] bottom-[-45vh] left-[-40vw] opacity-20 -z-9" />
+        <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] top-[-45vh] right-[-40vw] opacity-20 -z-9" />
       </section>
     </>
     )
