@@ -20,7 +20,7 @@ export function getInitialTimerByTagType(tag: number):Time{
     { min: 15, sec: 0, counting: false } // Tag 2 => Long break
   ][tag]
 }
-type msgsType = {
+export type msgsType = {
   "end-25-minute-journey": string,
   "notifies-end-journey": string,
   "notifies-end-25-minute-journey": string,
