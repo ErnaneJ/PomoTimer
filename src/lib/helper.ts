@@ -20,8 +20,17 @@ export function getInitialTimerByTagType(tag: number):Time{
     { min: 15, sec: 0, counting: false } // Tag 2 => Long break
   ][tag]
 }
+type msgsType = {
+  "end-25-minute-journey": string,
+  "notifies-end-journey": string,
+  "notifies-end-25-minute-journey": string,
+  "notifies-end-interval": string,
+  "end-interval": string,
+  "msg-notifies-end-interval": string,
+}
 
 export function updateTimer(
+  msgs: msgsType, 
   dataTimer: Time,
   currentTab: number,
   setCurrentTab: (tab: number) => void,
@@ -43,30 +52,30 @@ export function updateTimer(
   if (dataTimer.min == 0 && dataTimer.sec == 0 && currentTab == 0) {
     setCurrentTab(1); // short break
     setDataTimer(getInitialTimerByTagType(1));
-    toast.success('Jornada de 25min concluída com sucesso!', {
+    toast.success(msgs['end-25-minute-journey'], {
       iconTheme: {
         primary: ["rgb(219,82,77)", "rgb(70,142,145)", "rgb(67,126,168)"][currentTab],
         secondary: "white"
       },
     });
     notifications.sendNotification(
-      "🕑 PomoTimer - Jornada finalizada",
-      "Jornada de 25min concluída com sucesso! Uffa.. 😅 Descanse um pouco.",
+      msgs['notifies-end-journey'],
+      msgs["notifies-end-25-minute-journey"],
       currentTab
     );
     sounds.alarm();
   } else if ((currentTab != 0) && dataTimer.min == 0 && dataTimer.sec == 0) {
     setCurrentTab(0); // to restart the cycle
     setDataTimer(getInitialTimerByTagType(0));
-    toast.success('Opaaa.. 😎 Intervalo finalizado!', {
+    toast.success(msgs["end-interval"], {
       iconTheme: {
         primary: ["rgb(219,82,77)", "rgb(70,142,145)", "rgb(67,126,168)"][currentTab],
         secondary: "white"
       },
     });
     notifications.sendNotification(
-      "🕑 PomoTimer - Intervalo encerrado",
-      `Opaaa.. 😎 Intervalo finalizado! Que tal mais um ciclo?? 💪`,
+      msgs["notifies-end-interval"],
+      msgs["msg-notifies-end-interval"],
       currentTab
     );
     sounds.alarm();

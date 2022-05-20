@@ -1,0 +1,21 @@
+{
+  "language": "English",
+  "hello": "Hello",
+  "pomodoro": "Pomodoro",
+  "short-break": "Short break",
+  "long-break": "Long break",
+  "update-language": "Language updated successfully!",
+  "start": "Start",
+  "stop": "Stop",
+  "reset": "reset",
+  "msg-reset-timer": "Timer reset",
+  "developed-by": "Developed with ♥ by ",
+  "timer-in-progress": "Timer in progress",
+  "msg-time-in-progress": "📌 To change the timer type, stop the one already running and try again.",
+  "end-25-minute-journey": "25min journey successfully completed!",
+  "notifies-end-journey": "🕑 PomoTimer - Finished journey",
+  "notifies-end-25-minute-journey": "25 min journey successfully completed! 😅 Get some rest.",
+  "end-interval": "Oops.. 😎 Interval finished!",
+  "notifies-end-interval": "🕑 PomoTimer - Interval is over",
+  "msg-notifies-end-interval": "Oops.. 😎 Interval finished! How about one more cycle?? 💪"
+}

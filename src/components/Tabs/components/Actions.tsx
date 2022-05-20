@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Time } from "../../../lib/types"
 import { getInitialTimerByTagType, updateTimer, timerIsChanged, sounds } from "../../../lib/helper"
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 interface ActionsProps{
   currentTab: number;
@@ -11,7 +12,16 @@ interface ActionsProps{
 }
 
 export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: ActionsProps ){
+  const { t } = useTranslation();
   const [statusChangedTime, setStatusChangedTime] = useState(false);
+  const [msgs, _] = useState({
+    "end-interval": t("end-interval"),
+    "end-25-minute-journey": t('end-25-minute-journey'),
+    "notifies-end-journey": t('notifies-end-journey'),
+    "notifies-end-25-minute-journey": t("notifies-end-25-minute-journey"),
+    "notifies-end-interval": t("notifies-end-interval"),
+    "msg-notifies-end-interval": t("msg-notifies-end-interval"),
+  });
 
   const handleCounting = () => {
     sounds.switch();
@@ -20,7 +30,7 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
 
   const handleReset = () => {
     if(dataTimer.counting) sounds.switch();
-    toast.success("Temporizador reiniciado");
+    toast.success(t("msg-reset-timer"));
     setDataTimer(getInitialTimerByTagType(currentTab));
   }
 
@@ -28,7 +38,7 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
     let interval: ReturnType<typeof setInterval>;
     setStatusChangedTime(timerIsChanged(dataTimer, currentTab));
     if(dataTimer.counting) interval = setInterval(() => {
-      updateTimer(dataTimer, currentTab, setCurrentTab, setDataTimer);
+      updateTimer(msgs, dataTimer, currentTab, setCurrentTab, setDataTimer);
     }, 1000);
     return () => clearInterval(interval);
   }, [dataTimer]);
@@ -41,14 +51,14 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
           w-[200px] h-[55px] bg-white text-3xl uppercase font-bold mt-4 mb-3 transition-color duration-500 rounded-lg opacity-80 hover:opacity-100 box-shadow-button${dataTimer.counting ? "--active" : ""}
         `}
         >
-          {!dataTimer.counting ? "Iniciar" : "Parar"}
+          {!dataTimer.counting ? t('start') : t('stop')}
       </button>
 
       <button type="button"
         onClick={handleReset}
         className={`text-white text-xl font-bold transition-all duration-500 ${statusChangedTime ? "" : "hide-button"}`}
       >
-          reiniciar
+          {t('reset')}
       </button>
     </>
   );
