@@ -1,4 +1,4 @@
-import { Time } from "./types";
+import { task, tasksType, Time } from "./types";
 import toast from "react-hot-toast";
 
 import Switch from "../assets/sounds/switch.mp3";
@@ -119,4 +119,21 @@ export const notifications = {
       });
     }
   }
+}
+
+export function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ')
+}
+
+export function filteredTasks(tasks:task[], todo:string="To-do", done:string="Done"):tasksType{
+  return {
+    todo: {
+      title: todo,
+      tasks: tasks.filter((task) => !task.done)
+    },
+    done: {
+      title: done,
+      tasks: tasks.filter((task) => task.done)
+    },
+  };
 }
