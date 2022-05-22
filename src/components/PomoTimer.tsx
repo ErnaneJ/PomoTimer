@@ -1,16 +1,19 @@
-import { Fragment, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Tabs } from "./Tabs";
-import { getItemToLocalStorage, notifications, setItemToLocalStorage } from "../lib/helper";
+import { getItemToLocalStorage, notifications, setItemToLocalStorage, validate_sound } from "../lib/helper";
 
 import clock from '../assets/images/clock.svg';
+import useSound from 'use-sound';
+import Tab from "../assets/sounds/tab.mp3";
 import { Toaster } from "react-hot-toast";
 import { Tasks } from "./Tasks";
 import { Transition } from "@headlessui/react";
 import { SwitchShowTasks } from "./SwitchShowTasks";
 
 export function PomoTimer() {
+  const [playSound] = useSound(Tab);
   const [ currentTab, setCurrentTab ] = useState<number>(0);
   const [ showTasks, setShowTasks ] = useState<boolean>(JSON.parse(getItemToLocalStorage('showTasks') || 'false'));
   
@@ -20,6 +23,7 @@ export function PomoTimer() {
 
   useEffect(() => {
     setItemToLocalStorage('showTasks', JSON.stringify(showTasks));
+    validate_sound(() => playSound());
   }, [showTasks]);
 
   return (

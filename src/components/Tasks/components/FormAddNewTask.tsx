@@ -1,5 +1,7 @@
+import { t } from "i18next";
 import { ListPlus, PlusCircle } from "phosphor-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { classNames } from "../../../lib/helper";
 import { task } from "../../../lib/types";
 
@@ -9,6 +11,8 @@ interface FormAddNewTaskProps {
 }
 
 export function FormAddNewTask({ addNewTask, detailColor }:FormAddNewTaskProps){
+  const { t } = useTranslation();
+
   const [taskTitle, setTaskTitle] = useState<string>('');
 
   const handleCreateTask = () => {
@@ -17,7 +21,7 @@ export function FormAddNewTask({ addNewTask, detailColor }:FormAddNewTaskProps){
   }
 
   const handleKeyDown = (e:any) => {
-    if (e.key === 'Enter') handleCreateTask();
+    if ((e.key === 'Enter') && (taskTitle != '')) handleCreateTask();
   }
 
   return (
@@ -32,18 +36,18 @@ export function FormAddNewTask({ addNewTask, detailColor }:FormAddNewTaskProps){
             onChange={e => setTaskTitle(e.target.value)}
             onKeyDown={handleKeyDown}
             className="block bg-transparent outline-none w-full h-full" 
-            placeholder="Título da tarefa.."/>
+            placeholder={t("placeholder-task-title")}/>
         </div>
         <button
           className={classNames(
             `flex gap-2 items-center bg-${detailColor} text-white font-semibold`,
-            "px-2 py-1 rounded-xl cursor-pointer",
+            "px-2 py-1 rounded-xl cursor-pointer transition-all hover:opacity-90",
             "disabled:opacity-50 disabled:cursor-not-allowed")}
           disabled={taskTitle == ''}
           onClick={handleCreateTask}
         >
           <ListPlus size={20} />
-          Adicionar 
+          {t("button-add-new-task")} 
         </button>
       </li>
   )

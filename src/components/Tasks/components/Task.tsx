@@ -13,9 +13,7 @@ interface TaskProps{
 
 export function Task({ detailColor, lastTask, task, deleteTask, setTask}: TaskProps){
   return (
-        <li
-        className="relative group rounded-md py-3 pl-2 flex gap-2 transition-all items-start justify-between hover:bg-gray-100"
-      >
+        <li className="relative group rounded-md py-3 pl-2 flex gap-2 transition-all items-start justify-between hover:bg-gray-100">
         {
           task.done
           ? <CheckCircle size={30} className={`text-${detailColor} -translate-y-[.35rem]`}/>

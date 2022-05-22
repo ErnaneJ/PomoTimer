@@ -5,6 +5,9 @@ import { useTranslation } from 'react-i18next';
 import LocaleContext from '../../../LocaleContext';
 import i18n from '../../../i18n';
 import toast from 'react-hot-toast';
+import useSound from 'use-sound';
+import switch_clean from "../../../assets/sounds/switch_clean.mp3";
+import { validate_sound } from '../../../lib/helper';
 
 const languages = [
   { id: 1, name: 'English', value: 'en', unavailable: false },
@@ -17,6 +20,7 @@ interface SetLocaleMenuProps {
 
 export function SetLocaleMenu({ currentTab }:SetLocaleMenuProps){
   const { t } = useTranslation();
+  const [playSound] = useSound(switch_clean);
   const { locale } = useContext(LocaleContext);
 
   function changeLocale(l :string):void {
@@ -24,6 +28,7 @@ export function SetLocaleMenu({ currentTab }:SetLocaleMenuProps){
       i18n.changeLanguage(l);
       toast.dismiss();
       toast.success(t('update-language'));
+      validate_sound(() => playSound());
     }
   }
   

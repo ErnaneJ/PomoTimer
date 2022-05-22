@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { Time } from "../../../lib/types"
-import { getInitialTimerByTagType, updateTimer, timerIsChanged, sounds } from "../../../lib/helper"
+import { getInitialTimerByTagType, updateTimer, timerIsChanged, validate_sound } from "../../../lib/helper"
 import toast from "react-hot-toast";
+import useSound from 'use-sound';
+import Switch from "../../../assets/sounds/switch.mp3";
+import Alarm from "../../../assets/sounds/alarm.mp3";
+import tab from "../../../assets/sounds/tab.mp3";
+
 import { useTranslation } from "react-i18next";
 
 interface ActionsProps{
@@ -12,6 +17,10 @@ interface ActionsProps{
 }
 
 export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: ActionsProps ){
+  const [playSound_switch] = useSound(Switch);
+  const [playSound_tab] = useSound(tab);
+  const [playSound_alarm] = useSound(Alarm);
+  
   const { t } = useTranslation();
   const [statusChangedTime, setStatusChangedTime] = useState(false);
   const [msgs, _] = useState({
@@ -24,12 +33,12 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
   });
 
   const handleCounting = () => {
-    sounds.switch();
+    validate_sound(() => playSound_switch());
     setDataTimer({...dataTimer, counting: !dataTimer.counting});
   }
 
   const handleReset = () => {
-    if(dataTimer.counting) sounds.switch();
+    if(dataTimer.counting) validate_sound(() => playSound_switch());
     toast.success(t("msg-reset-timer"));
     setDataTimer(getInitialTimerByTagType(currentTab));
   }
@@ -38,7 +47,7 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
     let interval: ReturnType<typeof setInterval>;
     setStatusChangedTime(timerIsChanged(dataTimer, currentTab));
     if(dataTimer.counting) interval = setInterval(() => {
-      updateTimer(msgs, dataTimer, currentTab, setCurrentTab, setDataTimer);
+      updateTimer(msgs, dataTimer, currentTab, () => validate_sound(() => playSound_alarm()), () => validate_sound(() => playSound_tab()), setCurrentTab, setDataTimer);
     }, 1000);
     return () => clearInterval(interval);
   }, [dataTimer]);

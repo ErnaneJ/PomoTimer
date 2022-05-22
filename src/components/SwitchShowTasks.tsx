@@ -1,4 +1,5 @@
 import { Switch } from "@headlessui/react";
+import { useTranslation } from "react-i18next";
 
 interface SwitchShowTasksProps {
   showTasks: boolean;
@@ -6,8 +7,11 @@ interface SwitchShowTasksProps {
 }
 
 export function SwitchShowTasks({showTasks, setShowTasks}:SwitchShowTasksProps) {
+  const { t } = useTranslation();
+
   return (
-    <div className="w-full mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] flex gap-2 items-start justify-end mt-3 text-white font-semibold">
+    <div
+      className="w-full mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] flex gap-2 items-center justify-end mt-3 text-white font-semibold">
       <Switch
           checked={showTasks}
           onChange={setShowTasks}
@@ -19,7 +23,12 @@ export function SwitchShowTasks({showTasks, setShowTasks}:SwitchShowTasksProps) 
           className={`${showTasks ? 'translate-x-7' : 'translate-x-0'}
             pointer-events-none inline-block h-[24px] w-[24px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
-      </Switch> Tarefas 
+      </Switch> 
+      <p 
+        className="cursor-pointer"
+        onClick={() => setShowTasks(!showTasks)}>
+        {t("switch-show-tasks")} 
+      </p>
     </div>
   );
 }

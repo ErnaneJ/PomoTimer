@@ -2,6 +2,7 @@ import { CheckCircle, Circle, DotsThreeVertical, Trash } from "phosphor-react";
 import { task } from "../../../lib/types";
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { useTranslation } from "react-i18next";
 
 interface MenuTaskProps {
   detailColor: string;
@@ -11,7 +12,8 @@ interface MenuTaskProps {
   setTask: (task:task, value:boolean, title?:string) => void;
 }
 export function MenuTask({ detailColor, lastTask, deleteTask, setTask, task }:MenuTaskProps) {
-
+  const { t } = useTranslation();
+  
   const handleLastTask = () => {
     const panel = document.getElementById('tab-panel-tasks')?.parentElement
     setTimeout(() => {
@@ -48,8 +50,8 @@ export function MenuTask({ detailColor, lastTask, deleteTask, setTask, task }:Me
                   >
                     {
                       task.done
-                      ? <><Circle size={25} className={`min-w-fit text-${detailColor}`}/> Marcar como não feito</>
-                      : <><CheckCircle size={25}  className={`min-w-fit text-${detailColor}`} /> Marcar como Feito</>
+                      ? <><Circle size={25} className={`min-w-fit text-${detailColor}`}/> {t("back-to-do")}</>
+                      : <><CheckCircle size={25}  className={`min-w-fit text-${detailColor}`} /> {t("mark-as-one")}</>
                     }
                   </button>
                 )}
@@ -62,7 +64,7 @@ export function MenuTask({ detailColor, lastTask, deleteTask, setTask, task }:Me
                       active ? `bg-black/10 text-white` : 'text-gray-900'
                     } group flex w-full gap-2 items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    <Trash size={25} className={`min-w-fit text-${detailColor}`}/> Excluir
+                    <Trash size={25} className={`min-w-fit text-${detailColor}`}/> {t("delete")}
                   </button>
                 )}
               </Menu.Item>
