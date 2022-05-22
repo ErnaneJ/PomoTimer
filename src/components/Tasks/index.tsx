@@ -57,7 +57,7 @@ export function Tasks({ currentTab }:TasksProps) {
   }
 
   useEffect(() => {
-    setTasksTypes(filteredTasks(tasks));
+    setTasksTypes(filteredTasks(tasks, t("to-do"), t('done')));
     validate_sound(() => playSound_switch())
     setItemToLocalStorage('tasks', JSON.stringify(tasks));
   }, [tasks]);
