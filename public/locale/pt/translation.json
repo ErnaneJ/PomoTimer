@@ -17,5 +17,20 @@
   "notifies-end-25-minute-journey": "Jornada de 25min concluída com sucesso! Uffa.. 😅 Descanse um pouco.",
   "end-interval": "Opaaa.. 😎 Intervalo finalizado!",
   "notifies-end-interval": "🕑 PomoTimer - Intervalo encerrado",
-  "msg-notifies-end-interval": "Opaaa.. 😎 Intervalo finalizado! Que tal mais um ciclo?? 💪"
+  "msg-notifies-end-interval": "Opaaa.. 😎 Intervalo finalizado! Que tal mais um ciclo?? 💪",
+  "default-task-title": "Utilizar sistema de tarefas do PomoTimer!",
+  "update-status-task": "Status da tarefa alterado!",
+  "task-deleted": "Tarefa excluída!",
+  "task-added": "Tarefa adicionada!",
+  "nothing-here": "Não há nada aqui..",
+  "tasks-to-do": "Eai, vamos fazer não?",
+  "tasks-done": "Aee, você já finalizou várias!",
+  "mark-as-one": "Concluído",
+  "back-to-do": "Não feito",
+  "delete": "Excluir",
+  "placeholder-task-title": "Digite o título da nova tarefa..",
+  "button-add-new-task": "Adicionar",
+  "switch-show-tasks": "Mostrar Tarefas",
+  "to-do": "Pendentes",
+  "done": "Concluídas"
 }

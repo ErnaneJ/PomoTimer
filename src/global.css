@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+*{ scroll-behavior: smooth; }
+
 .bg-tabMain{ @apply bg-tabMain-500; }
 .bg-tabShortTime{ @apply bg-tabShortTime-500; }
 .bg-tabLongTime{ @apply bg-tabLongTime-500; }
@@ -18,3 +20,15 @@
 .box-shadow-button--active{ box-shadow: 0px 5px 0px #ccc; box-shadow: none; transform: translateY(5px);}
 
 .hide-button{ user-select: none; touch-action: none; opacity: 0; cursor: default;}
+
+.text-tabMain{ @apply text-tabMain-500; }
+.text-tabShortTime{ @apply text-tabShortTime-500; }
+.text-tabLongTime{ @apply text-tabLongTime-500; }
+
+.ring-tabMain{ @apply ring-tabMain-500/50; }
+.ring-tabShortTime{ @apply ring-tabShortTime-500/50; }
+.ring-tabLongTime{ @apply ring-tabLongTime-500/50; }
+
+.scrollbar-def::-webkit-scrollbar-thumb { border-radius: 100vh; }
+
+.scrollbar-def{ @apply scrollbar-track-transparent; @apply scrollbar-thin; @apply scrollbar-thumb-transparent}

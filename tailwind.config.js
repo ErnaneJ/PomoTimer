@@ -5,6 +5,7 @@ module.exports = {
       colors:{
         tabMain: {
           500: "rgb(219,82,77)",
+          400: "#db524d80"
         },
         tabShortTime: {
           500: "rgb(70,142,145)",
@@ -21,5 +22,10 @@ module.exports = {
       }
     },
   },
-  plugins: [ ],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
+  variants: {
+    scrollbar: ['rounded']
+  }
 }

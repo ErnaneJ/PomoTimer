@@ -17,5 +17,20 @@
   "notifies-end-25-minute-journey": "25 min journey successfully completed! 😅 Get some rest.",
   "end-interval": "Oops.. 😎 Interval finished!",
   "notifies-end-interval": "🕑 PomoTimer - Interval is over",
-  "msg-notifies-end-interval": "Oops.. 😎 Interval finished! How about one more cycle?? 💪"
+  "msg-notifies-end-interval": "Oops.. 😎 Interval finished! How about one more cycle?? 💪",
+  "default-task-title": "Use PomoTimer's Task System!",
+  "update-status-task": "Task status changed!",
+  "task-deleted": "Task deleted!",
+  "task-added": "Task added!",
+  "nothing-here": "There's nothing here..",
+  "tasks-to-do": "So, are you not going to do it?",
+  "tasks-done": "Wow, you've already finished several!",
+  "mark-as-one": "Mark as Done",
+  "back-to-do": "Back To-do",
+  "delete": "Delete",
+  "placeholder-task-title": "Enter the title of the new task..",
+  "button-add-new-task": "Add",
+  "switch-show-tasks": "Show Tasks",
+  "to-do": "To-do",
+  "done": "Done"
 }

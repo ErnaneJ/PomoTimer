@@ -1,9 +1,5 @@
-import { Time } from "./types";
+import { task, tasksType, Time } from "./types";
 import toast from "react-hot-toast";
-
-import Switch from "../assets/sounds/switch.mp3";
-import Alarm from "../assets/sounds/alarm.mp3";
-import Tab from "../assets/sounds/tab.mp3";
 
 import clock0 from "../assets/images/clock-0.png";
 import clock1 from "../assets/images/clock-1.png";
@@ -33,6 +29,8 @@ export function updateTimer(
   msgs: msgsType, 
   dataTimer: Time,
   currentTab: number,
+  audio_alarm: () => void,
+  audio_tab: () => void,
   setCurrentTab: (tab: number) => void,
   setDataTimer: (updated_time: Time) => void ):void{
     
@@ -63,7 +61,8 @@ export function updateTimer(
       msgs["notifies-end-25-minute-journey"],
       currentTab
     );
-    sounds.alarm();
+    audio_alarm();
+    audio_tab();
   } else if ((currentTab != 0) && dataTimer.min == 0 && dataTimer.sec == 0) {
     setCurrentTab(0); // to restart the cycle
     setDataTimer(getInitialTimerByTagType(0));
@@ -78,28 +77,19 @@ export function updateTimer(
       msgs["msg-notifies-end-interval"],
       currentTab
     );
-    sounds.alarm();
+    audio_alarm();
+    audio_tab();
   }
+}
+
+export function validate_sound(sound:()=>void):void {
+  if(!JSON.parse(getItemToLocalStorage('soundOn') || 'true')) return;
+  sound();
 }
   
 export function timerIsChanged(dataTimer: Time, currentTab: number):boolean{
   const defaultTimeByTag:Time = getInitialTimerByTagType(currentTab);
   return (defaultTimeByTag.min != dataTimer.min || defaultTimeByTag.sec != dataTimer.sec)
-}
-
-export const sounds = {
-  switch: () =>{
-    const audio = new Audio(Switch);
-    audio.play();
-  },
-  alarm: () =>{
-    const audio = new Audio(Alarm);
-    audio.play();
-  },
-  tab: () =>{
-    const audio = new Audio(Tab);
-    audio.play();
-  }
 }
 
 export const notifications = {
@@ -115,8 +105,34 @@ export const notifications = {
           body: message,
           icon: [clock0, clock1, clock2][currentTab]
         });
-        notification.onclick = ():void => {window.focus(); sounds.tab();};
+        notification.onclick = ():void => {window.focus();};
       });
     }
   }
+}
+
+export function setItemToLocalStorage(item:string, value:any){
+  localStorage.setItem(item, value);
+}
+
+export function getItemToLocalStorage(item:string){
+  return localStorage.getItem(item);
+}
+
+export function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
+}
+
+export function filteredTasks(tasks:task[], todo:string="To-do", done:string="Done", default_title_task:string=''):tasksType{
+  if(default_title_task != '') tasks.forEach(t => t.id == "0" ? t.title = default_title_task : null);
+  return {
+    todo: {
+      title: todo,
+      tasks: tasks.filter((task) => !task.done)
+    },
+    done: {
+      title: done,
+      tasks: tasks.filter((task) => task.done)
+    },
+  };
 }

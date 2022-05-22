@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import useSound from 'use-sound';
 import { useTranslation } from "react-i18next";
-import { timerIsChanged, sounds } from "../../../lib/helper";
+import { timerIsChanged, validate_sound } from "../../../lib/helper";
 import { Time } from "../../../lib/types";
+import Tab from "../../../assets/sounds/tab.mp3";
 
 interface MenuProps{
   dataTimer: Time;
@@ -12,6 +14,7 @@ interface MenuProps{
 
 export function Menu({ currentTab, dataTimer, setCurrentTab }: MenuProps){
   const { t } = useTranslation();
+  const [playSound] = useSound(Tab);
   const [tabs, _] = useState([
     {name: t("pomodoro"), idx: 0},
     {name: t("short-break"), idx: 1},
@@ -41,7 +44,7 @@ export function Menu({ currentTab, dataTimer, setCurrentTab }: MenuProps){
     }
   }
   useEffect(() => {
-    sounds.tab();
+    validate_sound(() => playSound())
   }, [currentTab]);
 
   return (
