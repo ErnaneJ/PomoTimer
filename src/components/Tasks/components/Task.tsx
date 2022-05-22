@@ -1,6 +1,4 @@
-import { Transition } from "@headlessui/react";
 import { CheckCircle, Circle } from "phosphor-react";
-import { Fragment, useEffect, useState } from "react";
 import { classNames } from "../../../lib/helper";
 import { task } from "../../../lib/types";
 import { MenuTask } from "./MenuTask";
@@ -8,9 +6,12 @@ import { MenuTask } from "./MenuTask";
 interface TaskProps{
   task: task;
   detailColor: string;
+  lastTask: boolean;
+  deleteTask: (task: task) => void;
   setTask: (task: task, value:boolean, title?:string) => void;
 }
-export function Task({ detailColor, task, setTask}: TaskProps){
+
+export function Task({ detailColor, lastTask, task, deleteTask, setTask}: TaskProps){
   return (
         <li
         className="relative group rounded-md py-3 pl-2 flex gap-2 transition-all items-start justify-between hover:bg-gray-100"
@@ -22,7 +23,7 @@ export function Task({ detailColor, task, setTask}: TaskProps){
         }                    
         <div className='w-full flex align-center justify-between'>
           <div>
-            <h3 className="text-sm font-medium leading-5">
+            <h3 className={`text-sm leading-5 font-semibold ${task.done && "line-through opacity-60"}`}>
               {task.title}
             </h3>
 
@@ -34,7 +35,7 @@ export function Task({ detailColor, task, setTask}: TaskProps){
               )}
             />
           </div>
-          <MenuTask detailColor={detailColor} task={task} setTask={setTask}/>
+          <MenuTask detailColor={detailColor} lastTask={lastTask} deleteTask={deleteTask} task={task} setTask={setTask}/>
         </div>
       </li>
   );

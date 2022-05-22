@@ -121,8 +121,16 @@ export const notifications = {
   }
 }
 
+export function setItemToLocalStorage(item:string, value:any){
+  localStorage.setItem(item, value);
+}
+
+export function getItemToLocalStorage(item:string){
+  return localStorage.getItem(item);
+}
+
 export function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(' ');
 }
 
 export function filteredTasks(tasks:task[], todo:string="To-do", done:string="Done"):tasksType{

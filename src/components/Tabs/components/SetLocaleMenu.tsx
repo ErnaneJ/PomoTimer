@@ -11,7 +11,11 @@ const languages = [
   { id: 2, name: 'Português', value: 'pt', unavailable: false }
 ]
 
-export function SetLocaleMenu(){
+interface SetLocaleMenuProps {
+  currentTab: number;
+}
+
+export function SetLocaleMenu({ currentTab }:SetLocaleMenuProps){
   const { t } = useTranslation();
   const { locale } = useContext(LocaleContext);
 
@@ -26,7 +30,7 @@ export function SetLocaleMenu(){
   return (
     <Listbox value={locale} onChange={changeLocale}>
       <div className="transition-all relative mt-1">
-        <Listbox.Button className="relative w-full h-10 rounded-lg backdrop-blur-sm bg-white/20 py-2 pl-3 pr-10 cursor-pointer text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+        <Listbox.Button className="relative w-full h-10 rounded-lg backdrop-blur-sm bg-white/20 py-2 pl-3 pr-10 cursor-pointer text-left focus:outline-none sm:text-sm">
           <span className="block truncate uppercase text-white font-semibold">{locale}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <Translate size={32} weight="bold" className="h-5 w-5 text-white" aria-hidden="true"/>
@@ -38,7 +42,7 @@ export function SetLocaleMenu(){
                 key={languageIdx}
                 className={ ({ active }) =>
                   `w-100 relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                    active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
+                    active ? 'bg-black/10 text-gray-900' : 'text-gray-900'
                   }`
                 }
                 value={language.value}
@@ -53,7 +57,7 @@ export function SetLocaleMenu(){
                       {language.name}
                     </span>
                     {selected && (
-                      <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                      <span className={`absolute inset-y-0 left-0 flex items-center pl-3 text-tab${currentTab == 0 ? "Main" : (currentTab == 1 ? "ShortTime" : "LongTime")}`}>
                         <Check size={32} className="h-5 w-5" aria-hidden="true"/>
                       </span>
                     )}

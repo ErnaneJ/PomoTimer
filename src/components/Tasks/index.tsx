@@ -1,99 +1,29 @@
 import { useEffect, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { task, tasksType } from '../../lib/types';
-import { classNames, filteredTasks } from '../../lib/helper';
+import { classNames, filteredTasks, getItemToLocalStorage, setItemToLocalStorage } from '../../lib/helper';
 import { Task } from './components/Task';
+import { EndList } from './components/EndList';
+import toast from 'react-hot-toast';
+import { FormAddNewTask } from './components/FormAddNewTask';
 
 interface TasksProps {
   currentTab: number;
 }
 
-const mockTasks = [
+const defaultTask = [
   {
-    id: "id_1",
-    title: 'Does drinking coffee make you smarter?',
-    done: true,
-  },
-  {
-    id: "id_2",
-    title: "So you've bought coffee... now what?",
-    done: true,
-  },
-  {
-    id: "id_3",
-    title: 'Ask Me Anything: 10 answers to your questions about coffee',
+    id: "0",
+    title: 'Utilizar sistema de tarefas do PomoTimer!',
     done: false,
   },
-  {
-    id: "id_4",
-    title: "The worst advice we've ever heard about coffee",
-    done: false,
-  },
-  {
-    id: "id_5",
-    title: 'Does drinking coffee make you smarter?',
-    done: true,
-  },
-  {
-    id: "id_6",
-    title: "So you've bought coffee... now what?",
-    done: true,
-  },
-  {
-    id: "id_7",
-    title: 'Ask Me Anything: 10 answers to your questions about coffee',
-    done: false,
-  },
-  {
-    id: "id_8",
-    title: "The worst advice we've ever heard about coffee",
-    done: false,
-  },
-  {
-    id: "id_1",
-    title: 'Does drinking coffee make you smarter?',
-    done: true,
-  },
-  {
-    id: "id_2",
-    title: "So you've bought coffee... now what?",
-    done: true,
-  },
-  {
-    id: "id_3",
-    title: 'Ask Me Anything: 10 answers to your questions about coffee',
-    done: false,
-  },
-  {
-    id: "id_4",
-    title: "The worst advice we've ever heard about coffee",
-    done: false,
-  },
-  {
-    id: "id_5",
-    title: 'Does drinking coffee make you smarter?',
-    done: true,
-  },
-  {
-    id: "id_6",
-    title: "So you've bought coffee... now what?",
-    done: true,
-  },
-  {
-    id: "id_7",
-    title: 'Ask Me Anything: 10 answers to your questions about coffee',
-    done: false,
-  },
-  {
-    id: "id_8",
-    title: "The worst advice we've ever heard about coffee",
-    done: false,
-  }
 ]
 
 export function Tasks({ currentTab }:TasksProps) {
+  const localTasks = getItemToLocalStorage('tasks');
   const [colorsPerTab] = useState<string[]>(["tabMain", "tabShortTime", "tabLongTime"]);
-  const [tasks, setTasks] = useState<task[]>(mockTasks);
+  const [tasks, setTasks] = useState<task[]>(localTasks != null ? JSON.parse(localTasks) : defaultTask);
+  const [selectedTab, setSelectedTab] = useState(0);
   const [tasksTypes, setTasksTypes] = useState<tasksType>(filteredTasks(tasks));
 
   const setTask = (task:task, value:boolean, title:string='') => {
@@ -106,12 +36,31 @@ export function Tasks({ currentTab }:TasksProps) {
     });
 
     setTasks(updatedTasks);
-    setTasksTypes(filteredTasks(tasks));
+    toast.dismiss();
+    toast.success("Status da tarefa alterado!");
   }
 
+  const deleteTask = (task:task) => {
+    setTasks(tasks.filter(t => t.id != task.id) || []);
+    toast.dismiss();
+    toast.success("Tarefa excluída!");
+  }
+
+  const addNewTask = (task:task) => {
+    setSelectedTab(0);
+    setTasks([...tasks, task]);
+    toast.dismiss();
+    toast.success("Tarefa adicionada!");
+  }
+
+  useEffect(() => {
+    setTasksTypes(filteredTasks(tasks));
+    setItemToLocalStorage('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
   return (
-    <div className="group w-full h-full max-h-[45vh] transition-all overflow-hidden mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] px-2 py-8 sm:px-0">
-      <Tab.Group>
+    <div className="group w-full h-full max-h-[45vh] transition-all overflow-hidden mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] px-2 py-4 sm:px-0">
+      <Tab.Group selectedIndex={selectedTab} onChange={setSelectedTab}>
         <Tab.List className="flex space-x-1 rounded-xl backdrop-blur-sm bg-white/20 p-1">
           {Object.values(tasksTypes).map((tasksType) => (
             <Tab
@@ -135,17 +84,27 @@ export function Tasks({ currentTab }:TasksProps) {
             <Tab.Panel
               key={type_idx}
               className={classNames(
-                'rounded-xl bg-white p-3 h-full max-h-[30vh] scrollbar-def group-hover:scrollbar-thumb-gray-300',
+                'rounded-xl bg-white px-3 py-4 h-full min-h-[100px] max-h-[30vh] scrollbar-def group-hover:scrollbar-thumb-gray-300',
                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-zinc-400 focus:outline-none focus:ring-2'
               )}
             >
-              <ul>
+              <ul id="tab-panel-tasks">
+                <FormAddNewTask addNewTask={addNewTask} detailColor={colorsPerTab[currentTab]}/>
                 {
                   type.tasks.length > 0 
                   ? type.tasks.map((task, task_idx) => (
-                    <Task task={task} detailColor={colorsPerTab[currentTab]} setTask={setTask}/>
+                    <>
+                      <Task key={task_idx} task={task} lastTask={task_idx >= (type.tasks.length -2)} detailColor={colorsPerTab[currentTab]} deleteTask={deleteTask} setTask={setTask}/>
+                    </>
                   ))
-                  : "Nenhuma task para ser mostrada"
+                  : <EndList sticker={2} message={"Nada aqui.. :("}/>
+                }
+                 {
+                  type.tasks.length > 0 &&
+                  (type_idx == 0 
+                    ? <EndList sticker={1} message={"E essas aqui, vai fazer não?"}/>
+                    : <EndList sticker={0} message={"Aeeeee, finalizou todas!"}/>
+                  )
                 }
               </ul>
             </Tab.Panel>

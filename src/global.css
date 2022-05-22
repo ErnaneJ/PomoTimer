@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+*{ scroll-behavior: smooth; }
+
 .bg-tabMain{ @apply bg-tabMain-500; }
 .bg-tabShortTime{ @apply bg-tabShortTime-500; }
 .bg-tabLongTime{ @apply bg-tabLongTime-500; }
