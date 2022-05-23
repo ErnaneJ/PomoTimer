@@ -67,7 +67,7 @@ export function Tasks({ currentTab }:TasksProps) {
   }, [selectedTab]);
 
   return (
-    <div className="group w-full h-full max-h-[45vh] transition-all overflow-hidden mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] px-2 py-4 sm:px-0">
+    <div className="group w-full h-full max-h-[45vh] transition-all overflow-hidden sm:mx-0 sm:max-w-5xl sm:w-[600px] px-2 py-4 sm:px-0">
       <Tab.Group selectedIndex={selectedTab} onChange={setSelectedTab}>
         <Tab.List className="flex space-x-1 rounded-xl backdrop-blur-sm bg-white/20 p-1">
           {Object.values(tasksTypes).map((tasksType) => (
