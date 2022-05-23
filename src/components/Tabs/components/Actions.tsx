@@ -57,7 +57,7 @@ export function Actions({ currentTab, dataTimer, setDataTimer, setCurrentTab }: 
       <button type="button"
         onClick={handleCounting}
         className={`button-color-tab${currentTab == 0 ? "Main" : (currentTab == 1 ? "ShortTime" : "LongTime")}
-          w-[200px] h-[55px] bg-white text-3xl uppercase font-bold mt-4 mb-3 transition-color duration-500 rounded-lg hover:bg-white/90 box-shadow-button${dataTimer.counting ? "--active" : ""}
+          w-[200px] h-[55px] bg-white text-3xl uppercase font-bold mt-2 mb-3 transition-color duration-500 rounded-lg hover:bg-white/90 box-shadow-button${dataTimer.counting ? "--active" : ""}
         `}
         >
           {!dataTimer.counting ? t('start') : t('stop')}

@@ -49,7 +49,7 @@ export function Menu({ currentTab, dataTimer, setCurrentTab }: MenuProps){
 
   return (
     <>
-    <nav className="w-full flex items-center justify-between py-2 sm:w-3/4">
+    <nav className="w-full flex items-center justify-between pt-2 sm:w-3/4">
       {tabs.map((tab, key)=>(
         <button type="button" 
           key={key}
