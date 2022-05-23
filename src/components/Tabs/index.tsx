@@ -19,7 +19,6 @@ function getFaviconEl() {
   return document.getElementById("favicon") as HTMLLinkElement;
 }
 
-
 export function Tabs({ currentTab, setCurrentTab }: TabsProps){
   const [dataTimer, setDataTimer] = useState<Time>({
     min: 25,
@@ -34,7 +33,7 @@ export function Tabs({ currentTab, setCurrentTab }: TabsProps){
   }, [currentTab])
 
   return (
-    <section className='w-full mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] backdrop-blur-sm bg-white/20 rounded-xl drop-shadow-2xl px-4 py-2 flex flex-col items-center justify-center'>
+    <section className='w-full max-w-[98vw] mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] backdrop-blur-sm bg-white/20 rounded-xl drop-shadow-2xl px-4 py-2 flex flex-col items-center justify-center'>
       <Menu setCurrentTab={setCurrentTab} dataTimer={dataTimer} currentTab={currentTab} />
       <Timer dataTimer={dataTimer} />
       <Actions currentTab={currentTab} setCurrentTab={setCurrentTab} dataTimer={dataTimer} setDataTimer={setDataTimer}/>

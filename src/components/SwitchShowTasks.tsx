@@ -11,7 +11,7 @@ export function SwitchShowTasks({showTasks, setShowTasks}:SwitchShowTasksProps) 
 
   return (
     <div
-      className="w-full mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] flex gap-2 items-center justify-end mt-3 text-white font-semibold">
+      className="w-full max-w-[95vw] mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] flex gap-2 items-center justify-end mt-3 text-white font-semibold">
       <Switch
           checked={showTasks}
           onChange={setShowTasks}

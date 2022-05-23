@@ -32,5 +32,6 @@
   "button-add-new-task": "Adicionar",
   "switch-show-tasks": "Mostrar Tarefas",
   "to-do": "Pendentes",
-  "done": "Concluídas"
+  "done": "Concluídas",
+  "add-valid-title": "Adicione um título válido para a tarefa"
 }

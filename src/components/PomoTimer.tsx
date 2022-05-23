@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { Tasks } from "./Tasks";
 import { Transition } from "@headlessui/react";
 import { SwitchShowTasks } from "./SwitchShowTasks";
+import { MainFadeInDownContent, DivFadeInContent } from "./animations/genericAnimations";
 
 export function PomoTimer() {
   const [playSound] = useSound(Tab);
@@ -31,7 +32,9 @@ export function PomoTimer() {
       <Toaster position="top-right" reverseOrder={false} />
       <section className={`bg-tab${currentTab == 0 ? "Main" : (currentTab == 1 ? "ShortTime" : "LongTime")} relative overflow-hidden w-screen h-screen flex align-center flex-col justify-between font-mPlus font-w text-md transition-colors duration-1000 select-none`}>
         <Header title="PomoTimer" currentTab={currentTab}/>
-        <main className="w-full h-full flex flex-col items-center justify-start z-10 pt-8 scrollbar-def hover:scrollbar-thumb-gray-200">
+        <MainFadeInDownContent 
+          className="w-full h-full flex flex-col items-center justify-start z-10 pt-8 scrollbar-def hover:scrollbar-thumb-gray-100 overflow-x-hidden"
+        >
           <Tabs currentTab={currentTab} setCurrentTab={setCurrentTab}/>
           <SwitchShowTasks showTasks={showTasks} setShowTasks={setShowTasks}/>
           <Transition
@@ -46,11 +49,13 @@ export function PomoTimer() {
           >
             <Tasks currentTab={currentTab}/>
           </Transition>
-        </main>
+        </MainFadeInDownContent>
         <Footer/>
-        <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] bottom-[-45vh] left-[-40vw] opacity-20 -z-9" />
-        <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] top-[-45vh] right-[-40vw] opacity-20 -z-9" />
+        <DivFadeInContent>
+          <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] bottom-[-45vh] left-[-40vw] opacity-20 -z-9" />
+          <img src={clock} alt="Relógio analógico" width="512" height="512" className="absolute w-[100vw] h-[100vh] top-[-45vh] right-[-40vw] opacity-20 -z-9" />
+        </DivFadeInContent>
       </section>
     </>
-    )
-  }
+  );
+}

@@ -32,5 +32,6 @@
   "button-add-new-task": "Add",
   "switch-show-tasks": "Show Tasks",
   "to-do": "To-do",
-  "done": "Done"
+  "done": "Done",
+  "add-valid-title": "Add a valid title for the task"
 }

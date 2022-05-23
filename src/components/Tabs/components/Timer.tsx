@@ -15,7 +15,7 @@ export function Timer({ dataTimer }:TimerProps){
     }
   }, [dataTimer]);
   return (
-    <div className="text-8xl sm:text-9xl text-white font-bold text-custom-shadow my-6">
+    <div className="text-8xl sm:text-9xl text-white font-bold text-custom-shadow my-2">
       {complementWithZeros(dataTimer.min)}
       :
       {complementWithZeros(dataTimer.sec)}

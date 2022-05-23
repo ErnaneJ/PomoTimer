@@ -1,9 +1,11 @@
 import { t } from "i18next";
 import { ListPlus, PlusCircle } from "phosphor-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import { classNames } from "../../../lib/helper";
 import { task } from "../../../lib/types";
+import { InputShakeAnimation } from "../../animations/genericAnimations";
 
 interface FormAddNewTaskProps {
   detailColor:string;
@@ -14,14 +16,25 @@ export function FormAddNewTask({ addNewTask, detailColor }:FormAddNewTaskProps){
   const { t } = useTranslation();
 
   const [taskTitle, setTaskTitle] = useState<string>('');
+  const [invalidTaskTitle, setInvalidTaskTitle] = useState<boolean>(false);
 
-  const handleCreateTask = () => {
-    addNewTask({id: String(new Date().getTime()), title: taskTitle, done: false});
-    setTaskTitle('');
+  const handleCreateTask = (e:any) => {
+    if(taskTitle != ''){
+      addNewTask({id: String(new Date().getTime()), title: taskTitle, done: false});
+      setTaskTitle('');
+    }else{
+      toast.error(t("add-valid-title"));
+      setInvalidTaskTitle(true);
+      setTimeout(() => {
+        setInvalidTaskTitle(false);
+        setTimeout(() => document.getElementById('task-title')?.focus(), 200);
+        console.log(document.getElementById('task-title'))
+      }, 600);
+    }
   }
 
   const handleKeyDown = (e:any) => {
-    if ((e.key === 'Enter') && (taskTitle != '')) handleCreateTask();
+    if ((e.key === 'Enter')) handleCreateTask(e);
   }
 
   return (
@@ -30,13 +43,24 @@ export function FormAddNewTask({ addNewTask, detailColor }:FormAddNewTaskProps){
       >
         <PlusCircle size={39} className={`text-${detailColor}`}/>
         <div className='w-full flex align-center h-9 justify-between'>
-          <input 
-            type="text" 
-            value={taskTitle}
-            onChange={e => setTaskTitle(e.target.value)}
-            onKeyDown={handleKeyDown}
-            className="block bg-transparent outline-none w-full h-full" 
-            placeholder={t("placeholder-task-title")}/>
+          {
+            !invalidTaskTitle
+            ? <input 
+              id="task-title"
+              type="text" 
+              value={taskTitle}
+              onChange={e => setTaskTitle(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="block bg-transparent outline-none w-full h-full" 
+              placeholder={t("placeholder-task-title")}/>
+            : <InputShakeAnimation
+              type="text" 
+              value={taskTitle}
+              onChange={e => setTaskTitle(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="block bg-transparent outline-none w-full h-full" 
+              placeholder={t("placeholder-task-title")}/>
+          }
         </div>
         <button
           className={classNames(
