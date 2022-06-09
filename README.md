@@ -17,9 +17,7 @@
 </p>
 
 <p align="center">
-  <img alt="status-ci" src="https://github.com/Ernanej/PomoTimer/actions/workflows/node.js.yml/badge.svg"/>⠀
-  <img alt="PomoTimer" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>⠀
-  <img alt="PomoTimer" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>⠀
+  <img alt="status-ci" src="https://github.com/Ernanej/PomoTimer/actions/workflows/node.js.yml/badge.svg"/>
 </p>
 
 ## 🚀 Technologies
