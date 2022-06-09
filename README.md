@@ -10,14 +10,14 @@
   <a href="#-contribute">Contribute</a>&nbsp;&nbsp;&nbsp;
 </p>
 
-<br>
-
-<p align="center">
-  <img alt="PomoTimer" src="./public/pomotimer.png" width="100%">
-</p>
+<br/>
 
 <p align="center">
   <img alt="status-ci" src="https://github.com/Ernanej/PomoTimer/actions/workflows/node.js.yml/badge.svg"/>
+</p>
+
+<p align="center">
+  <img alt="PomoTimer preview" src="./public/pomotimer_preview.png" width="100%">
 </p>
 
 ## 🚀 Technologies
@@ -32,8 +32,6 @@ This project was developed with the following technologies:
   - [Styled Components](https://styled-components.com/)
 
 ## 💻 Project
-
-O PomoTimer é um temporizador pomodoro que funciona no navegador desktop e mobile. O objetivo deste aplicativo é ajudar o indivíduo a se concentrar em qualquer tarefa que esteja desenvolvendo. Este aplicativo é inspirado na <a href="https://www.napratica.org.br/pomodoro/">Técnica Pomodoro</a>, que é um método de gerenciamento de tempo desenvolvido por Francesco Cirillo. ⏰
 
 PomoTimer is a pomodoro timer that works on desktop and mobile browser. The purpose of this app is to help the individual to focus on whatever task they are doing. This app is inspired by the [Pomodoro Technique](https://todoist.com/productivity-methods/pomodoro-technique), which is a time management method developed by [Francesco Cirillo](https://francescocirillo.com/pages/francesco-cirillo).
 
