@@ -84,25 +84,22 @@ All files    |   94.33 |    91.89 |      90 |   95.83 |
 
 ## ⚙️ Contribute
 
-- Clone este repositório:
-  ```bash
-  $ git clone https://github.com/ErnaneJ/PomoTimer.git
-  ```
-- Crie uma nova branch:
+- Fork this repository:
+- Create a new branch:
   ```bash
   $ git branch -b <branch_name>
   ```
-- Instale as dependências necessárias:
+- Install the necessary dependencies:
   ```bash
   $ npm i # or yarn install
   ```
-- Execute em modo de desenvolvimento:
+- Run in development mode:
   ```bash
   $ npm run dev
   ```
-- Desenvolva....... 🤯🚀
+- Develop....... 🤯🚀
 
-Após a sua incrível contribuição estar concluída, abra um `Pull Request` que irei analisar! 
+After your amazing contribution is complete, open a `Pull Request` which I will review! 
 
 ---
 <p align="center">
