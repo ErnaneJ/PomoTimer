@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Tabs } from "./Tabs";
-import { getItemToLocalStorage, notifications, setItemToLocalStorage, validate_sound } from "../lib/helper";
+import { getItemToLocalStorage, defaultDataCurrentTabSettings, notifications, setItemToLocalStorage, validate_sound } from "../lib/helper";
 
 import clock from '../assets/images/clock.svg';
 import useSound from 'use-sound';
@@ -15,7 +15,8 @@ import { MainFadeInDownContent, DivFadeInContent } from "./animations/genericAni
 
 export function PomoTimer() {
   const [playSound] = useSound(Tab);
-  const [ currentTab, setCurrentTab ] = useState<number>(JSON.parse(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataTimerSettings)).currentTab);
+  console.log(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataCurrentTabSettings))
+  const [ currentTab, setCurrentTab ] = useState<number>(JSON.parse(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataCurrentTabSettings)).currentTab);
   const [ showTasks, setShowTasks ] = useState<boolean>(JSON.parse(getItemToLocalStorage('showTasks') || 'false'));
   
   useEffect(() => {
@@ -58,8 +59,4 @@ export function PomoTimer() {
       </section>
     </>
   );
-}
-
-function defaultDataTimerSettings(defaultDataTimerSettings: any): string {
-  throw new Error("Function not implemented.");
 }

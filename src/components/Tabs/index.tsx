@@ -4,7 +4,7 @@ import { Menu } from "./components/Menu";
 import { Timer } from "./components/Timer";
 
 import { Time } from "../../lib/types"
-import { getInitialTimerByTagType, getItemToLocalStorage, setItemToLocalStorage } from "../../lib/helper";
+import { defaultDataCurrentTabSettings, getInitialTimerByTagType, getItemToLocalStorage, setItemToLocalStorage } from "../../lib/helper";
 
 import clock0 from "../../assets/images/clock-0.png";
 import clock1 from "../../assets/images/clock-1.png";
@@ -20,7 +20,7 @@ function getFaviconEl() {
 }
 
 export function Tabs({ currentTab, setCurrentTab }: TabsProps){
-  const [dataTimer, setDataTimer] = useState<Time>(JSON.parse(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataTimerSettings)).dataTimer);
+  const [dataTimer, setDataTimer] = useState<Time>(JSON.parse(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataCurrentTabSettings)).dataTimer);
 
   useEffect(() => {
     const favicon = getFaviconEl();
@@ -37,8 +37,4 @@ export function Tabs({ currentTab, setCurrentTab }: TabsProps){
       <Actions currentTab={currentTab} setCurrentTab={setCurrentTab} dataTimer={dataTimer} setDataTimer={setDataTimer}/>
     </section>
   );
-}
-
-function defaultDataTimerSettings(defaultDataTimerSettings: any): string {
-  throw new Error("Function not implemented.");
 }
