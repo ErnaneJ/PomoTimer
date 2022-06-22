@@ -5,6 +5,15 @@ import clock0 from "../assets/images/clock-0.png";
 import clock1 from "../assets/images/clock-1.png";
 import clock2 from "../assets/images/clock-2.png";
 
+export const defaultDataCurrentTabSettings = {
+  currentTab: 0,
+  dataTimer: {
+    min: 25,
+    sec: 0,
+    counting: false
+  }
+}
+
 export function complementWithZeros(value: number):String{
   return ("00"+value).slice(-2);
 }

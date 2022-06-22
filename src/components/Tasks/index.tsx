@@ -1,15 +1,23 @@
-import { useEffect, useState } from 'react'
+import useSound from 'use-sound';
+import toast from 'react-hot-toast';
 import { Tab } from '@headlessui/react'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next';
+
 import { task, tasksType } from '../../lib/types';
+import useImagePreloader from '../../lib/hooks/useImagePreloader';
 import { classNames, filteredTasks, getItemToLocalStorage, setItemToLocalStorage, validate_sound } from '../../lib/helper';
+
+import { FormAddNewTask } from './components/FormAddNewTask';
 import { Task } from './components/Task';
 import { EndList } from './components/EndList';
-import toast from 'react-hot-toast';
-import useSound from 'use-sound';
-import { FormAddNewTask } from './components/FormAddNewTask';
-import { useTranslation } from 'react-i18next';
+
 import Switch_clean from "../../assets/sounds/switch_clean.mp3";
 import tab from "../../assets/sounds/tab.mp3";
+
+import bento_cool from "../../assets/images/bento_cool.png";
+import bento_judging from "../../assets/images/bento_judging.png";
+import bento_sad from "../../assets/images/bento_sad.png";
 
 interface TasksProps {
   currentTab: number;
@@ -17,6 +25,8 @@ interface TasksProps {
 
 export function Tasks({ currentTab }:TasksProps) {
   const { t } = useTranslation();
+  
+  useImagePreloader([bento_cool, bento_judging, bento_sad]);
 
   const [playSound_tab] = useSound(tab);
   const [playSound_switch] = useSound(Switch_clean);
@@ -109,13 +119,13 @@ export function Tasks({ currentTab }:TasksProps) {
                       deleteTask={deleteTask} 
                       setTask={setTask}/>
                   ))
-                  : <EndList sticker={2} message={t("nothing-here")}/>
+                  : <EndList imgSticker={bento_sad} message={t("nothing-here")}/>
                 }
                  {
                   type.tasks.length > 0 &&
                   (type_idx == 0 
-                    ? <EndList sticker={1} message={t("tasks-to-do")}/>
-                    : <EndList sticker={0} message={t("tasks-done")}/>
+                    ? <EndList imgSticker={bento_judging} message={t("tasks-to-do")}/>
+                    : <EndList imgSticker={bento_cool} message={t("tasks-done")}/>
                   )
                 }
               </ul>

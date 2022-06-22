@@ -4,7 +4,7 @@ import { Menu } from "./components/Menu";
 import { Timer } from "./components/Timer";
 
 import { Time } from "../../lib/types"
-import { getInitialTimerByTagType } from "../../lib/helper";
+import { getInitialTimerByTagType, getItemToLocalStorage, setItemToLocalStorage } from "../../lib/helper";
 
 import clock0 from "../../assets/images/clock-0.png";
 import clock1 from "../../assets/images/clock-1.png";
@@ -20,17 +20,15 @@ function getFaviconEl() {
 }
 
 export function Tabs({ currentTab, setCurrentTab }: TabsProps){
-  const [dataTimer, setDataTimer] = useState<Time>({
-    min: 25,
-    sec: 0,
-    counting: false
-  });
+  const [dataTimer, setDataTimer] = useState<Time>(JSON.parse(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataTimerSettings)).dataTimer);
 
   useEffect(() => {
     const favicon = getFaviconEl();
     if(favicon != null) favicon.href = [clock0, clock1, clock2][currentTab];
-    setDataTimer(getInitialTimerByTagType(currentTab));
-  }, [currentTab])
+    if(!dataTimer.counting) setDataTimer(getInitialTimerByTagType(currentTab));
+  }, [currentTab]);
+
+  useEffect(() => { setItemToLocalStorage('dataCurrentTab', JSON.stringify({currentTab, dataTimer})); }, [dataTimer, currentTab]);
 
   return (
     <section className='w-full max-w-[98vw] mx-2 sm:mx-0 sm:max-w-5xl sm:w-[600px] backdrop-blur-sm bg-white/20 rounded-xl drop-shadow-2xl px-4 py-2 flex flex-col items-center justify-center'>
@@ -39,4 +37,8 @@ export function Tabs({ currentTab, setCurrentTab }: TabsProps){
       <Actions currentTab={currentTab} setCurrentTab={setCurrentTab} dataTimer={dataTimer} setDataTimer={setDataTimer}/>
     </section>
   );
+}
+
+function defaultDataTimerSettings(defaultDataTimerSettings: any): string {
+  throw new Error("Function not implemented.");
 }

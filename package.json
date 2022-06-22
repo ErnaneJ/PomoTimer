@@ -1,7 +1,16 @@
 {
-  "name": "pomotimer",
-  "private": true,
-  "version": "2.0.0",
+  "name": "PomoTimer",
+  "author": "Ernane Ferreira <ernane.junior25@gmail.com> (https://links.ernane.dev/)",
+  "public": true,
+  "version": "2.0.1",
+  "homepage": "https://github.com/ErnaneJ/PomoTimer",
+  "url": "https://github.com/ErnaneJ/PomoTimer/issues",
+  "email": "ernane.junior25@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ErnaneJ/PomoTimer.git",
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

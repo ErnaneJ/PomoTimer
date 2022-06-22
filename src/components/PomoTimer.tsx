@@ -15,7 +15,7 @@ import { MainFadeInDownContent, DivFadeInContent } from "./animations/genericAni
 
 export function PomoTimer() {
   const [playSound] = useSound(Tab);
-  const [ currentTab, setCurrentTab ] = useState<number>(0);
+  const [ currentTab, setCurrentTab ] = useState<number>(JSON.parse(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataTimerSettings)).currentTab);
   const [ showTasks, setShowTasks ] = useState<boolean>(JSON.parse(getItemToLocalStorage('showTasks') || 'false'));
   
   useEffect(() => {
@@ -58,4 +58,8 @@ export function PomoTimer() {
       </section>
     </>
   );
+}
+
+function defaultDataTimerSettings(defaultDataTimerSettings: any): string {
+  throw new Error("Function not implemented.");
 }
