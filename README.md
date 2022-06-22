@@ -7,13 +7,15 @@
   <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-features">features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-tests">tests</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-contribute">Contribute</a>&nbsp;&nbsp;&nbsp;
+  <a href="#-contribute">Contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-license">License</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 <br/>
 
 <p align="center">
-  <img alt="status-ci" src="https://github.com/Ernanej/PomoTimer/actions/workflows/node.js.yml/badge.svg"/>
+  <a href="https://github.com/ErnaneJ/PomoTimer/actions/workflows/node.js.yml"><img alt="status-ci" src="https://github.com/Ernanej/PomoTimer/actions/workflows/node.js.yml/badge.svg"/></a>
+  <a href="https://opensource.org/licenses/MIT"><img alt="badge-mit-license" src="https://img.shields.io/badge/License-MIT-g.svg"/></a>
 </p>
 
 <p align="center">
@@ -99,9 +101,12 @@ All files    |   94.33 |    91.89 |      90 |   95.83 |
 
 After your amazing contribution is complete, open a `Pull Request` which I will review! 
 
+## 📜 License
+
+See the [License](https://github.com/ernanej/pomotimer/blob/master/LICENSE).
+
 ---
 <p align="center">
   Developed with ♥ by  <a href="https://links.ernane.dev">Ernane Ferreira</a> 👋🏻<br/>
   <small>Project developed with the total and only educational purpose.<small>
 </p>
-

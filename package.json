@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ErnaneJ/PomoTimer.git",
+    "url": "https://github.com/ErnaneJ/PomoTimer.git"
   },
   "scripts": {
     "dev": "vite",
