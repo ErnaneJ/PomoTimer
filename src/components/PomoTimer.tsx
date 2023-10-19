@@ -19,6 +19,15 @@ export function PomoTimer() {
   const [ showTasks, setShowTasks ] = useState<boolean>(JSON.parse(getItemToLocalStorage('showTasks') || 'false'));
   
   useEffect(() => {
+    const colors = ["rgb(219,82,77)", "rgb(70,142,145)", "rgb(67,126,168)"];
+
+    const themeMetaTag = document.querySelector('meta[name="theme-color"]');
+    if (themeMetaTag) {
+      themeMetaTag.setAttribute("content", colors[currentTab]);
+    }
+  }, [currentTab]);
+
+  useEffect(() => {
     setTimeout(() => notifications.requestPermission(), 2000);
   }, []);
 
