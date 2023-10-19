@@ -28,7 +28,6 @@ export function FormAddNewTask({ addNewTask, detailColor }:FormAddNewTaskProps){
       setTimeout(() => {
         setInvalidTaskTitle(false);
         setTimeout(() => document.getElementById('task-title')?.focus(), 200);
-        console.log(document.getElementById('task-title'))
       }, 600);
     }
   }

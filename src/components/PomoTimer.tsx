@@ -15,7 +15,6 @@ import { MainFadeInDownContent, DivFadeInContent } from "./animations/genericAni
 
 export function PomoTimer() {
   const [playSound] = useSound(Tab);
-  console.log(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataCurrentTabSettings))
   const [ currentTab, setCurrentTab ] = useState<number>(JSON.parse(getItemToLocalStorage('dataCurrentTab') || JSON.stringify(defaultDataCurrentTabSettings)).currentTab);
   const [ showTasks, setShowTasks ] = useState<boolean>(JSON.parse(getItemToLocalStorage('showTasks') || 'false'));
   
